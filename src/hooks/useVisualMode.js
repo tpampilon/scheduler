@@ -31,5 +31,5 @@ export default function useVisualMode(initial) {
   // returns the last mode in the array
   const mode = history.slice(-1)[0];
 
-  return { mode, transition, back }
+  return { mode, transition, back };
 }
