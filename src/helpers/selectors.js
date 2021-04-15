@@ -1,5 +1,5 @@
 
-export default function getAppointmentsForDay(state, day) {
+const getAppointmentsForDay = function(state, day) {
   
   let result = [];
   let appointments;
@@ -29,3 +29,25 @@ export default function getAppointmentsForDay(state, day) {
   return result;
 
 }
+
+const getInterview = function(state, interview) {
+  
+  // checks if interview is null
+  if (interview === null){
+    return null;
+  }
+
+  let result = {};
+  const interviewers = state.interviewers;
+  const interviewApp = interview.interviewer;
+  
+  for (let key in interviewers) {
+    if (Number(key) === interviewApp) {
+      result = {interviewer: interviewers[key], student: interview.student};
+    }
+  }
+
+  return result;
+}
+
+export { getAppointmentsForDay, getInterview }

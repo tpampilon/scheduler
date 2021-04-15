@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import DayList               from "components/DayList";
-import Appointment           from "components/Appointment";
-import getAppointmentsForDay from "../helpers/selectors";
+import DayList     from "components/DayList";
+import Appointment from "components/Appointment";
 
+import { getAppointmentsForDay, getInterview } from "../helpers/selectors";
 import "components/Application.scss";
 
 // stores the api URL for less mess.
@@ -34,15 +34,17 @@ export default function Application(props) {
         const interviewersInfo = all[2].data;
 
         console.log("interviewersInfo: ", interviewersInfo);
-        setState(prevState => ({...prevState, days: daysInfo,  appointments: appointmentsInfo }));
+        setState(prevState => ({...prevState, days: daysInfo,  appointments: appointmentsInfo, interviewers: interviewersURL }));
       })
   }, [])
 
   // uses a selector to select the specific appointments for the day
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const appointments = getAppointmentsForDay(state, state.day);
 
   // uses array.map to map through the appointments list
-  const appointmentsList = dailyAppointments.map(appointment => {
+  const schedule = appointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
+
     return (
       <Appointment key={appointment.id} {...appointment} />
     );
@@ -72,7 +74,7 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {appointmentsList}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
