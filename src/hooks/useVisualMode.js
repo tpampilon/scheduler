@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
-function useVisualMode(params) {
-  return <></>
+export default function useVisualMode(initial) {
+  
+  const [mode, setMode] = useState(initial);
+  
+
+
+  return { mode }
 }
-
-export default useVisualMode;
