@@ -3,8 +3,8 @@ export default function getAppointmentsForDay(state, day) {
   
   let result = [];
   let appointments;
-  const daysArr = state.days
-  const appsArr = state.appointments
+  const daysArr = state.days;
+  const appsArr = state.appointments;
   
   // loops through daysArr to find a matching day
   for (let arr of daysArr){
@@ -20,7 +20,7 @@ export default function getAppointmentsForDay(state, day) {
     for (let arr in appsArr){
       for (let app of appointments){
         if (Number(arr) === app) {
-          result.push(appsArr[arr])
+          result.push(appsArr[arr]);
         }
       }
     }
