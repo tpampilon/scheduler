@@ -8,7 +8,12 @@ export default function useVisualMode(initial) {
   const newHistory = [...history];
 
   // changes the current mode by pushing a new one
-  const transition = function(newMode) {
+  const transition = function(newMode, replace = false) {
+    // if "replace" is true, newMode should replace the previous mode
+    if(replace === true){
+      newHistory.pop();
+    }
+
     newHistory.push(newMode);
 
     setHistory(newHistory);
