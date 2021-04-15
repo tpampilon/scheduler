@@ -77,7 +77,7 @@ export default function Application(props) {
   }, [])
 
   // uses array.map to map through the appointments list
-  dailyAppointmentsList.map(appointment => {
+  dailyAppointments.map(appointment => {
     return (
       <Appointment key={appointment.id} {...appointment} />
     );
@@ -107,7 +107,7 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {appointmentsList}
+        {dailyAppointments}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
