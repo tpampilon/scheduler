@@ -1,5 +1,5 @@
 
-export function getAppointmentsForDay(state, day) {
+export default function getAppointmentsForDay(state, day) {
   
   let result = [];
   let appointments;
@@ -19,7 +19,7 @@ export function getAppointmentsForDay(state, day) {
   } else {
     for (let arr in appsArr){
       for (let app of appointments){
-        if (arr == app) {
+        if (Number(arr) === app) {
           result.push(appsArr[arr])
         }
       }
@@ -27,5 +27,5 @@ export function getAppointmentsForDay(state, day) {
   }
   
   return result;
-  
+
 }
