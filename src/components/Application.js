@@ -33,10 +33,14 @@ export default function Application(props) {
         const appointmentsInfo = all[1].data;
         const interviewersInfo = all[2].data;
 
-        console.log("interviewersInfo: ", interviewersInfo);
-        setState(prevState => ({...prevState, days: daysInfo,  appointments: appointmentsInfo, interviewers: interviewersURL }));
-      })
-  }, [])
+        setState(prevState => ({
+          ...prevState, 
+          days: daysInfo,  
+          appointments: appointmentsInfo, 
+          interviewers: interviewersInfo 
+        }));
+      });
+  },[])
 
   // uses a selector to select the specific appointments for the day
   const appointments = getAppointmentsForDay(state, state.day);
@@ -46,7 +50,12 @@ export default function Application(props) {
     const interview = getInterview(state, appointment.interview);
 
     return (
-      <Appointment key={appointment.id} {...appointment} />
+      <Appointment 
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview} 
+      />
     );
   });
 
