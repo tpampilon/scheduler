@@ -35,14 +35,10 @@ export default function Appointment(props) {
   }
 
   // deletes data using cancelInterview
-  function deleteInterview(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
+  function deleteInterview() {
     transition(DELETE);
 
-    props.cancelInterview(props.id, interview)
+    props.cancelInterview(props.id)
       .then (() => transition(EMPTY))
     
   }
