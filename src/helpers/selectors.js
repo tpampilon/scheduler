@@ -50,4 +50,35 @@ const getInterview = function(state, interview) {
   return result;
 }
 
-export { getAppointmentsForDay, getInterview }
+const getInterviewersForDay = function(state, day) {
+  
+  let result = [];
+  let interviewers;
+  const daysArr = state.days;
+  const intersArr = state.interviewers;
+  
+  // loops through daysArr to find a matching day
+  for (let arr of daysArr){
+    if (arr.name === day){
+      interviewers = arr.interviewers
+    }
+  }
+  
+  // checks to see if interviewers is undefined
+  if (!interviewers) {
+    interviewers = [];
+  } else {
+    for (let arr in intersArr){
+      for (let app of interviewers){
+        if (Number(arr) === app) {
+          result.push(intersArr[arr]);
+        }
+      }
+    }
+  }
+  
+  return result;
+
+}
+
+export { getAppointmentsForDay, getInterview, getInterviewersForDay }

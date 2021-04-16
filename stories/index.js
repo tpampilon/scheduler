@@ -1,23 +1,23 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import { action }    from "@storybook/addon-actions";
 
 import "index.scss";
 
-import Button from "components/Button";
-import DayListItem from "components/DayListItem";
-import DayList from "components/DayList";
+import Button              from "components/Button";
+import DayListItem         from "components/DayListItem";
+import DayList             from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
-import InterviewerList from "components/InterviewerList";
-import Appointment from "components/Appointment";
-import Header from "components/Appointment/Header";
-import Empty from "components/Appointment/Empty";
-import Show from "components/Appointment/Show";
-import Confirm from "components/Appointment/Confirm";
-import Status from "components/Appointment/Status";
-import Error from "components/Appointment/Error";
-import Form from "components/Appointment/Form";
+import InterviewerList     from "components/InterviewerList";
+import Appointment         from "components/Appointment";
+import Header              from "components/Appointment/Header";
+import Empty               from "components/Appointment/Empty";
+import Show                from "components/Appointment/Show";
+import Confirm             from "components/Appointment/Confirm";
+import Status              from "components/Appointment/Status";
+import Error               from "components/Appointment/Error";
+import Form                from "components/Appointment/Form";
 
 storiesOf("Button", module)
   .addParameters({
@@ -35,7 +35,7 @@ storiesOf("Button", module)
     </Button>
   ));
 
-  storiesOf("DayListItem", module)
+storiesOf("DayListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })

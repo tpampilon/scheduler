@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
+import axios       from "axios";
 import DayList     from "components/DayList";
 import Appointment from "components/Appointment";
 
-import { getAppointmentsForDay, getInterview } from "../helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors";
 import "components/Application.scss";
 
 // stores the api URL for less mess.
@@ -42,8 +42,9 @@ export default function Application(props) {
       });
   },[])
 
-  // uses a selector to select the specific appointments for the day
+  // uses selectors to select the specific appointments and interviewers for the day
   const appointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
 
   // uses array.map to map through the appointments list
   const schedule = appointments.map(appointment => {
@@ -54,11 +55,23 @@ export default function Application(props) {
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interview={interview} 
+        interview={interview}
+        interviewers={interviewers} 
       />
     );
   });
 
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
+
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  }
   
   return (
     <main className="layout">

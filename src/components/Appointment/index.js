@@ -1,9 +1,9 @@
-import React                from "react";
-import Header               from "components/Appointment/Header";
-import Empty                from "components/Appointment/Empty";
-import Show                 from "components/Appointment/Show";
-import Form                 from "components/Appointment/Form";
-import useVisualMode        from "../../hooks/useVisualMode";
+import React         from "react";
+import Header        from "components/Appointment/Header";
+import Empty         from "components/Appointment/Empty";
+import Show          from "components/Appointment/Show";
+import Form          from "components/Appointment/Form";
+import useVisualMode from "../../hooks/useVisualMode";
 
 import "components/Appointment/styles.scss";
 
@@ -13,6 +13,7 @@ const CREATE = "CREATE";
 
 export default function Appointment(props) {
 
+  // imported custom Hook to handle mode transitions
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -27,7 +28,7 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer}
         />
         )}
-      {mode === CREATE && <Form interviewers={[]} onCancel={back} />}
+      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={back} />}
     </article>
   );
 }
