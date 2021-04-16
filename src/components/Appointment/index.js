@@ -12,6 +12,7 @@ const EMPTY  = "EMPTY";
 const SHOW   = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const DELETE = "DELETE"
 
 export default function Appointment(props) {
   // imported custom Hook to handle mode transitions
@@ -33,6 +34,19 @@ export default function Appointment(props) {
       });
   }
 
+  // deletes data using cancelInterview
+  function deleteInterview(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(DELETE);
+
+    props.cancelInterview(props.id, interview)
+      .then (() => transition(EMPTY))
+    
+  }
+
   return(
     <article className="appointment">
       <Header time={props.time} />
@@ -41,10 +55,12 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={deleteInterview}
         />
         )}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={back} onSave={save} />}
       {mode === SAVING && <Status message="Saving" />}
+      {mode === DELETE && <Status message="Deleting" />}
     </article>
   );
 }
