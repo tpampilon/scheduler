@@ -7,14 +7,16 @@ export default function DayList(props){
 
   const days = daysArray.map(day => {
     
-    return (<DayListItem 
-    key={day.id}
-    name={day.name} 
-    spots={day.spots} 
-    selected={day.name === props.day}
-    spotsRemaining={props.spotsRemaining}
-    setDay={props.setDay}  
-    />)
+    return (
+      <DayListItem 
+        key={day.id}
+        name={day.name} 
+        spots={day.spots} 
+        selected={day.name === props.day}
+        spotsRemaining={props.spotsRemaining}
+        setDay={props.setDay}  
+      />
+    )
     
   }); 
 
