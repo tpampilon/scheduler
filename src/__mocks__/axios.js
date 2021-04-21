@@ -5,7 +5,7 @@ const fixtures = {
       name: "Monday",
       appointments: [1, 2],
       interviewers: [1, 2],
-      spots: 0
+      spots: 1
     },
     {
       id: 2,
@@ -84,9 +84,11 @@ export default {
   }),
 
   put: jest.fn((url) => {
+
     return Promise.resolve({
       status: 204,
       statusText: "No Content"
     });
   })
+
 };

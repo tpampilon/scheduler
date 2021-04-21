@@ -73,9 +73,9 @@ export default function useApplicationData() {
   function spotsRemaining(day) {
 
     const dayFound = state.days.find(eachDay => eachDay.name === day);
-    
+
     const spotsAvailable = dayFound.appointments.filter( appointmentId => state.appointments[appointmentId].interview === null);
-    
+
     return spotsAvailable.length;
   }
 
