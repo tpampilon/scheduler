@@ -6,11 +6,6 @@ import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
 
-  const listClass = classnames("day-list__item", {
-    "day-list__item--selected": props.selected,
-    "day-list__item--full": (props.spots === 0)
-  });
-
   let numberOfSpots;
 
   if (typeof (props.spotsRemaining(props.name)) !== 'number') {
@@ -19,6 +14,10 @@ export default function DayListItem(props) {
     numberOfSpots = props.spotsRemaining(props.name);
   }
 
+  const listClass = classnames("day-list__item", {
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": (numberOfSpots === 0)
+  });
   
   const formatSpots = () => {
     if (numberOfSpots > 1) {
