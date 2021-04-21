@@ -166,15 +166,12 @@ describe("Application", () => {
   
     fireEvent.click(queryByAltText(appointment, "Delete"));
   
-
     expect(
       getByText(appointment, "Are you sure you would like to delete?")
     ).toBeInTheDocument();
   
-   
     fireEvent.click(queryByText(appointment, "Confirm"));
   
-   
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
   
     await waitForElement(() => getByText(appointment, "Could not cancel appointment."));

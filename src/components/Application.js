@@ -3,8 +3,13 @@ import DayList            from "components/DayList";
 import Appointment        from "components/Appointment";
 import useApplicationData from "../hooks/useApplicationData"
 
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors";
 import "components/Application.scss";
+import { 
+  getAppointmentsForDay, 
+  getInterview, 
+  getInterviewersForDay 
+} from "../helpers/selectors";
+
 
 // component
 export default function Application(props) {
